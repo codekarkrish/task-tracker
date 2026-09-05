@@ -58,8 +58,7 @@ function updateTask(id, description) {
   const tasks = readTasks();
 
   const task = tasks.find(
-    (task) => task.id === Number(id)
-  );
+    (task) => task.id === Number(id));
 
   if (!task) {
     console.log("Task not found");
@@ -74,8 +73,32 @@ function updateTask(id, description) {
   console.log("Task updated successfully");
 }
 
+//delete 
+
+function deleteTask(id) {
+  const tasks = readTasks();
+
+  const taskExists = tasks.some(
+    (task) => task.id === Number(id)
+  );
+
+  if (!taskExists) {
+    console.log("Task not found");
+    return;
+  }
+
+  const updatedTasks = tasks.filter(
+    (task) => task.id !== Number(id)
+  );
+
+  writeTasks(updatedTasks);
+
+  console.log("Task deleted successfully");
+}
+
 module.exports = {
   addTask,
     listTasks,
     updateTask,
+      deleteTask,
 };
