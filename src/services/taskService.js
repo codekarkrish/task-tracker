@@ -96,9 +96,34 @@ function deleteTask(id) {
   console.log("Task deleted successfully");
 }
 
+// mark-in-progress & mark-done
+
+function updateTaskStatus(id, status) {
+  const tasks = readTasks();
+
+  const task = tasks.find(
+    task => task.id === Number(id)
+  );
+
+  if (!task) {
+    console.log("Task not found");
+    return;
+  }
+
+  task.status = status;
+  task.updatedAt = new Date().toISOString();
+
+  writeTasks(tasks);
+
+  console.log(
+    `Task marked as ${status}`
+  );
+}
+
 module.exports = {
   addTask,
     listTasks,
     updateTask,
       deleteTask,
+      updateTaskStatus,
 };
