@@ -4,6 +4,11 @@ const {
 } = require("../utils/fileManager");
 
 function addTask(description) {
+      if (!description) {
+    console.log("Description is required");
+    return;
+  }
+  
   const tasks = readTasks();
 
   const newTask = {
