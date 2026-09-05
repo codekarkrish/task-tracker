@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "id": 1,
+    "description": "Learn Git",
+    "status": "todo",
+    "createdAt": "2026-09-05T10:41:01.370Z",
+    "updatedAt": "2026-09-05T10:41:01.371Z"
+  },
+  {
+    "id": 2,
+    "description": "Learn Node.js",
+    "status": "todo",
+    "createdAt": "2026-09-05T10:41:26.722Z",
+    "updatedAt": "2026-09-05T10:41:26.723Z"
+  }
+]
