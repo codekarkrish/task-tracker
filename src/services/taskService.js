@@ -45,7 +45,37 @@ function listTasks() {
   });
 }
 
+
+//update 
+
+function updateTask(id, description) {
+
+  if (!description) {
+    console.log("Description is required");
+    return;
+  }
+
+  const tasks = readTasks();
+
+  const task = tasks.find(
+    (task) => task.id === Number(id)
+  );
+
+  if (!task) {
+    console.log("Task not found");
+    return;
+  }
+
+  task.description = description;
+  task.updatedAt = new Date().toISOString();
+
+  writeTasks(tasks);
+
+  console.log("Task updated successfully");
+}
+
 module.exports = {
   addTask,
     listTasks,
+    updateTask,
 };
