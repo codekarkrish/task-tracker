@@ -11,14 +11,18 @@ function addTask(description) {
   }
 
   const tasks = readTasks();
+const newId =
+  tasks.length > 0
+    ? Math.max(...tasks.map(task => task.id)) + 1
+    : 1;
 
-  const newTask = {
-    id: tasks.length + 1,
-    description,
-    status: "todo",
-    createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString(),
-  };
+ const newTask = {
+  id: newId,
+  description,
+  status: "todo",
+  createdAt: new Date().toISOString(),
+  updatedAt: new Date().toISOString(),
+};
 
   tasks.push(newTask);
 
@@ -30,21 +34,26 @@ function addTask(description) {
 }
 
 //List 
-function listTasks() {
+function listTasks(status) {
   const tasks = readTasks();
 
-  if (tasks.length === 0) {
+  const filteredTasks = status
+    ? tasks.filter(
+        task => task.status === status
+      )
+    : tasks;
+
+  if (filteredTasks.length === 0) {
     console.log("No tasks found");
     return;
   }
 
-  tasks.forEach((task) => {
+  filteredTasks.forEach(task => {
     console.log(
       `${task.id}. ${task.description} [${task.status}]`
     );
   });
 }
-
 
 //update 
 

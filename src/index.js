@@ -1,9 +1,3 @@
-const {
-  readTasks,
-} = require("./utils/fileManager");
-
-console.log(readTasks());
-
 const addCommand = require("./commands/add");
 const listCommand = require("./commands/list");
 const updateCommand = require("./commands/update");
@@ -17,11 +11,11 @@ const arg2 = process.argv[4];
 
 switch (command) {
   case "add":
-    addCommand(argument);
+    addCommand(arg1);
     break;
 
- case "list":
-    listCommand();
+  case "list":
+    listCommand(arg1);
     break;
 
   case "update":
@@ -32,14 +26,14 @@ switch (command) {
     deleteCommand(arg1);
     break;
 
- case "mark-in-progress":
-  markProgressCommand(arg1);
-  break;
+  case "mark-in-progress":
+    markProgressCommand(arg1);
+    break;
 
-case "mark-done":
-  markDoneCommand(arg1);
-  break;
-  
+  case "mark-done":
+    markDoneCommand(arg1);
+    break;
+
   default:
     console.log("Unknown command");
 }
